@@ -1,0 +1,55 @@
+.card{
+    padding: 0px!important;
+}
+
+.card-title{
+    margin-bottom: 0px!important;
+    padding: 10px;
+}
+
+.card-content{
+    padding: 0px!important;
+}
+
+.collapsible{
+    box-shadow: none;
+    margin: 0px;
+}
+
+.btnWrapper{
+    height: 36px;
+    padding-top: auto;
+}
+
+.btnWrapper a{
+    margin: 1.7px 2px;
+
+}
+
+.searchWrapper{
+    height: 32.4px;
+    margin-top: 1.7px;
+    padding-right: 16.3px;
+    padding-left: 16.3px;
+    position: relative;
+    right: -16.3px;
+    border-radius: 16.3px 0px 0px 16.3px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.searchWrapper input{
+    position: relative;
+    top: -5.4px;
+    height: 31.4px!important;
+    border-bottom: none!important;
+    margin: 0px!important;
+    color: #ffffff;
+}
+
+.searchWrapper input:focus{
+    border-bottom: none!important;
+}
+.collapsible-header.line:hover{
+    background-color: rgba(242,242,242,0.5);
+}
