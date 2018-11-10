@@ -131,12 +131,6 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 -- Déchargement des données de la table `etudiant`
 --
 
-INSERT INTO `etudiant` (`nom`, `prenom`, `email`, `motDePasse`, `matricule`, `id_promo`) VALUES
-('BENHALIMA', 'MOUNIR', 'benhalima@mounir.com', '151aad7698c1105e7c094f5315706b7c', 'A141414', 2),
-('BENGATTAT', 'HADJ ALI', 'bengattat@gmail.com', '14b3abeaa1bb5b452f70c26237f4428f', 'A153703', 2),
-('BENBERNOU', 'YASSER', 'benyasser@gmail.com', '151aad7698c1105e7c094f5315706b7c', 'A213242', 4),
-('KHELIL', 'YACINE', 'khelil@gmail.com', '151aad7698c1105e7c094f5315706b7c', 'A354332', 5),
-('BENDJALOUL', 'NOUREDDINE', 'bendji@benz.com', '151aad7698c1105e7c094f5315706b7c', 'A544332', 2);
 
 -- --------------------------------------------------------
 
