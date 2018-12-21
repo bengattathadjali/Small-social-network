@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	if(!isset($_SESSION['matricule']))
+		header('Location:inscription.php');
 	require_once 'db.php';
 	$matricule_enseignant = $_SESSION['matricule'];
 	// $statut = $_POST['statut'];
