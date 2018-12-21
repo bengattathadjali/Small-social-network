@@ -1,17 +1,25 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['matricule']))
+	if(!isset($_SESSION['email']))
 		header('Location:inscription.php');
 	require_once 'db.php';
-	$matricule_enseignant = $_SESSION['matricule'];
+	$email = $_SESSION['email'];
 	// $statut = $_POST['statut'];
-	$name = $bdd->prepare('SELECT nom,prenom FROM enseignant WHERE matricule_enseignant=:matricule_enseignant');
+	$name = $bdd->prepare('SELECT nom,prenom FROM enseignant WHERE email=:email');
  		$name->execute(array(
- 			'matricule_enseignant'=>$matricule_enseignant
+ 			'email'=>$email
  		));
- 		$coor = $name->fetch();
+		 $coor = $name->fetch();
+	
  	$_SESSION['nom'] = strtolower($coor['nom']);
- 	$_SESSION['prenom'] = strtolower($coor['prenom']);
+	 $_SESSION['prenom'] = strtolower($coor['prenom']);
+	
+	 $matricule = $bdd->prepare('SELECT matricule_enseignant FROM enseignant WHERE email=:email');
+ 		$matricule->execute(array(
+ 			'email'=>$email
+ 		));
+		 $coor_1 = $matricule->fetch();
+		 $_SESSION['matricule_enseignant'] = $coor_1['matricule_enseignant'];
  	//$_SESSION['champs']=NULL;	
 ?>
 
@@ -57,8 +65,9 @@
 	        	<textarea name="contenu" class="materialize-textarea" placeholder="Ecrivez votre texte"></textarea>
 	        </div>
 	      </div>
-	      <?php 
-		    $reponse = $bdd->query('SELECT id_promo FROM enseigne WHERE matricule_enseignant=\'' . $matricule_enseignant. '\' ');
+		  <?php 
+			
+		    $reponse = $bdd->query('SELECT id_promo FROM enseigne WHERE matricule_enseignant=\'' .$_SESSION['matricule_enseignant']. '\' ');
 
 		    while ($donnees = $reponse->fetch()){
 		      $id_promo = $donnees['id_promo'];
@@ -104,12 +113,12 @@
  	<?php 
  		$st = $bdd->prepare('SELECT * FROM publication WHERE matricule_enseignant=:matricule_enseignant ORDER BY datePublication DESC');
  		$st->execute(array(
- 			'matricule_enseignant'=>$matricule_enseignant
+ 			'matricule_enseignant'=>$_SESSION['matricule_enseignant']
  		));
 
  		$aut = $bdd->prepare('SELECT nom,prenom FROM enseignant WHERE matricule_enseignant=:matricule_enseignant');
  		$aut->execute(array(
- 			'matricule_enseignant'=>$matricule_enseignant
+ 			'matricule_enseignant'=>$_SESSION['matricule_enseignant']
  		));
  		$result = $aut->fetch();
  		

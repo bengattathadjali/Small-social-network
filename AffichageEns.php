@@ -1,5 +1,8 @@
 <?php 
     require_once 'db.php';
+    session_start();
+    if(!isset($_SESSION['email']))
+    header('Location:inscription.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr" >

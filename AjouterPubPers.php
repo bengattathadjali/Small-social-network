@@ -2,7 +2,7 @@
     session_start();
     require_once 'db.php';
 
-    $matricule_personnel = $_SESSION['matricule'];
+    $matricule_personnel = $_SESSION['matricule_personnel'];
     $matricule_enseignant=NULL;
     date_default_timezone_set('Africa/Algiers');
 	$datePublication = date("Y-m-d : H:i:s");

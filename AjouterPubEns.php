@@ -1,9 +1,10 @@
 <?php 
 	session_start();
-	
+	if(!isset($_SESSION['email']))
+		header('Location:inscription.php');
     require_once 'db.php';
 
-    $matricule_enseignant = $_SESSION['matricule'];
+    $matricule_enseignant = $_SESSION['matricule_enseignant'];
     $matricule_personnel=NULL;
     date_default_timezone_set('Africa/Algiers');
 	$datePublication = date("Y-m-d : H:i:s");

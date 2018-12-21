@@ -102,9 +102,9 @@
           
             <div class="field-wrap">
             <label>
-              Matricule<span class="req">*</span>
+              E-mail<span class="req">*</span>
             </label>
-            <input type="text"required name="matricule" autocomplete="off"/>
+            <input type="email"required name="email" autocomplete="off"/>
           </div>
           
           <div class="field-wrap">

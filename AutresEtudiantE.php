@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 	require_once 'db.php';
-	$matricule_enseignant = $_SESSION['matricule'];
+	$matricule_enseignant = $_SESSION['matricule_enseignant'];
 
 
 ?>

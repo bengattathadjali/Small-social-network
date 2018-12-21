@@ -1,15 +1,25 @@
 <?php
 	session_start();
+	if(!isset($_SESSION['email']))
+		header('Location:inscription.php');
+
 	require_once 'db.php';
-	$matricule_personnel = $_SESSION['matricule'];
-	$statut = $_SESSION['statut'];
-	$name = $bdd->prepare('SELECT nom,prenom FROM personnel WHERE matricule_personnel=:matricule_personnel');
+	$email = $_SESSION['email'];
+	// $statut = $_SESSION['statut'];
+	$name = $bdd->prepare('SELECT nom,prenom FROM personnel WHERE email=:email');
  		$name->execute(array(
- 			'matricule_personnel'=>$matricule_personnel
+ 			'email'=>$email
  		));
  		$coor = $name->fetch();
  	$_SESSION['nom'] = strtolower($coor['nom']);
- 	$_SESSION['prenom'] = strtolower($coor['prenom']);
+	 $_SESSION['prenom'] = strtolower($coor['prenom']);
+	
+	 $matricule = $bdd->prepare('SELECT matricule_personnel FROM personnel WHERE email=:email');
+	 $matricule->execute(array(
+		 'email'=>$email
+	 ));
+	 $coor_1 = $matricule->fetch();
+	 $_SESSION['matricule_personnel'] = $coor_1['matricule_personnel'];
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +69,7 @@
 	        </div>
 	      </div>
 	      <?php 
-		    $reponse = $bdd->query('SELECT id_promo FROM dirige WHERE matricule_personnel=\'' . $matricule_personnel. '\' ');
+		    $reponse = $bdd->query('SELECT id_promo FROM dirige WHERE matricule_personnel=\'' . $_SESSION['matricule_personnel']. '\' ');
 
 		    while ($donnees = $reponse->fetch()){
 		      $id_promo = $donnees['id_promo'];
@@ -105,12 +115,12 @@
  	<?php 
  		$st = $bdd->prepare('SELECT * FROM publication WHERE matricule_personnel=:matricule_personnel ORDER BY datePublication DESC');
  		$st->execute(array(
- 			'matricule_personnel'=>$matricule_personnel
+ 			'matricule_personnel'=>$_SESSION['matricule_personnel']
  		));
 
  		$aut = $bdd->prepare('SELECT nom,prenom FROM personnel WHERE matricule_personnel=:matricule_personnel');
  		$aut->execute(array(
- 			'matricule_personnel'=>$matricule_personnel
+ 			'matricule_personnel'=>$_SESSION['matricule_personnel']
  		));
  		$result = $aut->fetch();
  		
