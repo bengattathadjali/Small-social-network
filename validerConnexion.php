@@ -25,11 +25,13 @@
 										));
 										
 										if($rq->rowCount()===1){
-											header('Location:filActuEtu.php');
+											
+											 header('Location:filActuEtu.php');
 										}
 										else{
-										header('Location:inscription.php');
-										$_SESSION['msg']='Champs incorrecte';
+										 header('Location:inscription.php');
+										
+										 $_SESSION['msg']='Champs incorrecte';
 								}
 			}
 

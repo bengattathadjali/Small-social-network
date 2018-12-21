@@ -1,9 +1,9 @@
 <?php
 	require_once 'db.php';
-	$matricule = $_GET['matricule'];
+	$email = $_GET['email'];
 
-	$stmt = $bdd->prepare( "DELETE FROM etudiant WHERE matricule =:matricule" );
-            $stmt->bindParam(':matricule', $matricule);
+	$stmt = $bdd->prepare( "DELETE FROM etudiant WHERE email =:email" );
+            $stmt->bindParam(':email', $email);
             $stmt->execute();
 
 	header('Location:AffichageEtu.php');

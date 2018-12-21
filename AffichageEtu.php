@@ -50,26 +50,24 @@
                 </li>
    
                         <?php
-                            $reponse = $bdd ->query('SELECT nom,prenom,matricule,email FROM etudiant ORDER BY email DESC');
-                            $id_promo = $bdd->query('SELECT id_promo FROM etudiant ORDER BY email DESC');
+                            $reponse = $bdd ->query('SELECT nom,prenom,email FROM etudiant ORDER BY email DESC');
+                            
                            
                             foreach ($reponse as $donnees){
                             
-                             $id = $id_promo->fetch();
+                             
                             
                             
-                            $intitule = $bdd->query('SELECT intitule FROM promo WHERE id_promo=\'' . $id['id_promo']. '\' ');
                             
-                            $nom_intitule = $intitule->fetch();
                              echo '<ul><li>
                                      <div class="collapsible-header line" tabindex="0">
                                          <div class="col s4 center">'.$donnees['nom'].'</div>
                                          <div class="col s4 center">'.$donnees['prenom'].'</div>
-                                         <div class="col s4 center">'.$donnees['matricule'].'</div>
+                                         
                                          <div class="col s4 center">'.$donnees['email'].'</div>
-                                         <div class="col s4 center">'.$nom_intitule['intitule'].'</div>
+                                        
                                          <div class="col s4 center">
-                                           <a onclick="return confirm(\'Êtes vous sûr de supprimer?\')" href="TraitementSuppEtu.php?matricule='.$donnees['matricule'].'" 
+                                           <a onclick="return confirm(\'Êtes vous sûr de supprimer?\')" href="TraitementSuppEtu.php?email='.$donnees['email'].'" 
                                            class="waves-effect waves-light btn-small">Supprimer</a>
                                        </div>
                                         

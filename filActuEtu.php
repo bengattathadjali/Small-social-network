@@ -1,21 +1,18 @@
 <?php
 	session_start();
 	require_once 'db.php';
-	$matricule = $_SESSION['matricule'];
+	$email = $_SESSION['email'];
 	$statut = $_SESSION['statut'];
-	$name = $bdd->prepare('SELECT nom,prenom FROM etudiant WHERE matricule=:matricule');
+	$name = $bdd->prepare('SELECT nom,prenom FROM etudiant WHERE email=:email');
     $name->execute(array(
-      'matricule'=>$matricule
+      'email'=>$email
     ));
     $coor = $name->fetch();
   $_SESSION['nom'] = strtolower($coor['nom']);
   $_SESSION['prenom'] = strtolower($coor['prenom']);
 
-  $sth = $bdd->prepare('SELECT id_promo FROM etudiant WHERE matricule=:matricule ');
-		$sth->execute(array(
-			'matricule'=>$matricule
-		));
-		$id_promo = $sth->fetchColumn();
+  
+		$id_promo = 4;
 ?>
 
 <!DOCTYPE html>
@@ -167,7 +164,7 @@
 		  				<hr>
 		  				<p style ="position: right;"><?php echo $key['contenu']?></p><br>
 		  			<?php if($key['name_file'] !== NULL){
- 			 		echo "<a target='_blank' href=view.php?FileNo=".$key['name_file'].">".$key['name_file']."</a>";
+ 			 		echo "<a target='_blank' href=view.php?id_publication=".$key['id_publication'].">".$key['name_file']."</a>";
  			 		} ?></div>
 	  					<button class="w3-button w3-block w3-green" onclick="location.href='mailto:<?php echo $result['email'];?>?subject=Demande d\'information&body=A propos :%0D%0A<?php echo $key['contenu']?>'">Contacter</button>
 	  					</div>
