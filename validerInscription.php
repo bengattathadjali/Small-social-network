@@ -1,4 +1,7 @@
 <?php 
+	if (!isset($_SESSION['nom'])){
+		header('Location:inscription.php');
+	}
 	require_once 'db.php';
 	include 'function.php';
 	session_start();

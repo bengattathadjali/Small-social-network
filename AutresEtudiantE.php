@@ -25,7 +25,7 @@
       <li><a href="AutresEtudiantE.php">Autres Eleves</a></li>
       <li><a href="contactE.php">Contact</a></li>
       <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #179D79;"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']);?></a></li>
-       <li style="float:right"><a href="ChangerMotDepasse.php" title="Modifier Mot de Passe" target="_blanck">Compte</a></li>
+      
     </ul>
     <br><br>
 
@@ -38,28 +38,24 @@
         <th style="color: white;">Nom</th>
         <th style="color: white;">Prénom</th>
         <th style="color: white;">Email</th>
-        <th style="color: white;">Promo</th>
+        
       </tr>
     </thead>
    
                         <?php
-                           $id_promo = $bdd->query('SELECT id_promo FROM enseigne WHERE matricule_enseignant=\'' .$matricule_enseignant. '\' ');
-                           
-                         	 foreach ($id_promo as $id){
-                               $id_promo = $id['id_promo'];
-                                $etudiant = $bdd->query('SELECT * FROM etudiant WHERE id_promo=\'' . $id_promo. '\' ORDER BY id_promo DESC ');
+                          
+                                $etudiant = $bdd->query('SELECT * FROM etudiant  ORDER BY nom DESC ');
 
                                   foreach ($etudiant as $donnees) {
-                                     $intitule = $bdd->query('SELECT intitule FROM promo WHERE id_promo=\'' . $id['id_promo']. '\' ');
-                                     $nom_intitule = $intitule->fetch();
+                                    
                                     echo '<tr>    
                                            <td>'.$donnees['nom'].'</td>
                                            <td>'.$donnees['prenom'].'</td>   
                                            <td>'.$donnees['email'].'</td>
-                                           <td>'.$nom_intitule['intitule'].'</td>
+                                           
                                           </tr>';
                                   }
-                                }
+                                
                            
                            
                             ?>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 14 mai 2018 à 12:40
--- Version du serveur :  5.7.21
--- Version de PHP :  5.6.35
+-- Généré le :  lun. 24 déc. 2018 à 23:31
+-- Version du serveur :  5.7.23
+-- Version de PHP :  7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,20 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `consulter`
---
-
-DROP TABLE IF EXISTS `consulter`;
-CREATE TABLE IF NOT EXISTS `consulter` (
-  `matricule` varchar(255) NOT NULL,
-  `id_publication` int(11) NOT NULL,
-  PRIMARY KEY (`matricule`,`id_publication`),
-  KEY `FK_consulter_id_publication` (`id_publication`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `dirige`
 --
 
@@ -49,14 +35,6 @@ CREATE TABLE IF NOT EXISTS `dirige` (
   PRIMARY KEY (`matricule_personnel`,`id_promo`),
   KEY `FK_dirige_id_promo` (`id_promo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `dirige`
---
-
-INSERT INTO `dirige` (`matricule_personnel`, `id_promo`) VALUES
-('P04', 2),
-('P04', 3);
 
 -- --------------------------------------------------------
 
@@ -71,17 +49,10 @@ CREATE TABLE IF NOT EXISTS `enseignant` (
   `email` varchar(255) DEFAULT NULL,
   `motDePasse` varchar(255) DEFAULT NULL,
   `matricule_enseignant` varchar(255) NOT NULL,
+  `EmailConfirm` tinyint(4) NOT NULL,
+  `token` varchar(250) NOT NULL,
   PRIMARY KEY (`matricule_enseignant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `enseignant`
---
-
-INSERT INTO `enseignant` (`nom`, `prenom`, `email`, `motDePasse`, `matricule_enseignant`) VALUES
-('LATROCH', 'BACHIR', 'latroch@gmail.com', '151aad7698c1105e7c094f5315706b7c', 'E02'),
-('ABID', 'MERIEM', 'abid@gmail.com', '151aad7698c1105e7c094f5315706b7c', 'E07'),
-('HENNI', 'FOUAD', 'henni@gmail.com', '151aad7698c1105e7c094f5315706b7c', 'E43');
 
 -- --------------------------------------------------------
 
@@ -97,18 +68,6 @@ CREATE TABLE IF NOT EXISTS `enseigne` (
   KEY `FK_enseigne_id_promo` (`id_promo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Déchargement des données de la table `enseigne`
---
-
-INSERT INTO `enseigne` (`matricule_enseignant`, `id_promo`) VALUES
-('E07', 2),
-('E07', 3),
-('E07', 4),
-('E02', 5),
-('E07', 5),
-('E07', 7);
-
 -- --------------------------------------------------------
 
 --
@@ -119,18 +78,12 @@ DROP TABLE IF EXISTS `etudiant`;
 CREATE TABLE IF NOT EXISTS `etudiant` (
   `nom` char(255) DEFAULT NULL,
   `prenom` char(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
   `motDePasse` varchar(255) DEFAULT NULL,
-  `matricule` varchar(255) NOT NULL,
-  `id_promo` int(11) DEFAULT NULL,
-  PRIMARY KEY (`matricule`),
-  KEY `FK_Etudiant_id_promo` (`id_promo`)
+  `EmailConfirm` tinyint(4) NOT NULL,
+  `token` varchar(250) NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `etudiant`
---
-
 
 -- --------------------------------------------------------
 
@@ -145,24 +98,10 @@ CREATE TABLE IF NOT EXISTS `personnel` (
   `email` varchar(255) DEFAULT NULL,
   `motDePasse` varchar(255) DEFAULT NULL,
   `matricule_personnel` varchar(255) NOT NULL,
+  `EmailConfirm` tinyint(4) NOT NULL,
+  `token` varchar(250) NOT NULL,
   PRIMARY KEY (`matricule_personnel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `personnel`
---
-
-INSERT INTO `personnel` (`nom`, `prenom`, `email`, `motDePasse`, `matricule_personnel`) VALUES
-('MALTI', 'HBIB', 'malti@gmail.com', '151aad7698c1105e7c094f5315706b7c', 'P04'),
-('ABDELLAH', 'ISMAIL', NULL, NULL, 'P07'),
-('BENSMAINE', 'MEJDOUB', NULL, NULL, 'P09'),
-('BENHLIMA', 'MOHAMMED', NULL, NULL, 'P20'),
-('HAMADI', 'ABDELKADER', NULL, NULL, 'P30'),
-('MENAD', 'MOHAMMED', 'menad@gmail.com', '151aad7698c1105e7c094f5315706b7c', 'P32'),
-('BENDANI', 'AMINE', NULL, NULL, 'P43'),
-('KHELIL', 'MOURAD', NULL, NULL, 'P44'),
-('BENDANI', 'KADDOUR', NULL, NULL, 'P73'),
-('LATROCH', 'MOHAMMED', NULL, NULL, 'P90');
 
 -- --------------------------------------------------------
 
@@ -217,44 +156,18 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `matricule_personnel` varchar(255) DEFAULT NULL,
   `matricule_enseignant` varchar(255) DEFAULT NULL,
   `id_promo` int(11) DEFAULT NULL,
+  `name_file` varchar(255) NOT NULL,
+  `mime_file` varchar(255) NOT NULL,
+  `data_file` longblob,
   PRIMARY KEY (`id_publication`),
   KEY `FK_Publication_matricule_personnel` (`matricule_personnel`),
   KEY `FK_Publication_matricule_enseignant` (`matricule_enseignant`),
   KEY `FK_Publication_id_promo` (`id_promo`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `publication`
---
-
-INSERT INTO `publication` (`id_publication`, `datePublication`, `contenu`, `matricule_personnel`, `matricule_enseignant`, `id_promo`) VALUES
-(23, '2018-04-27 00:44:04', 'bonjour les geek', NULL, 'E07', 3),
-(25, '2018-04-24 04:06:12', 'bonjour 2', NULL, 'E43', 2),
-(26, '2018-04-27 02:26:02', 'bonsoir', NULL, 'E07', 3),
-(27, '2018-04-27 02:26:21', 'bonne nuit', NULL, 'E07', 3),
-(36, '2018-04-29 23:01:08', 'bonjour je suis abid', NULL, 'E07', 2),
-(37, '2018-05-03 10:15:38', 'bonjour les geek', NULL, 'E07', 2),
-(38, '2018-05-03 10:47:57', 'bonjour on est jeudi ', NULL, 'E07', 2),
-(39, '2018-05-03 10:47:57', 'bonjour on est jeudi ', NULL, 'E07', 3),
-(40, '2018-05-03 10:47:57', 'bonjour on est jeudi ', NULL, 'E07', 4),
-(41, '2018-05-03 10:47:57', 'bonjour on est jeudi ', NULL, 'E07', 5),
-(42, '2018-05-03 10:47:57', 'bonjour on est jeudi ', NULL, 'E07', 7),
-(43, '2018-05-03 10:58:39', 'test', NULL, 'E07', 5),
-(44, '2018-05-03 11:19:47', 'je suis bachir', NULL, 'E02', 5),
-(46, '2018-05-04 00:50:32', 'bonjour les examens seront remporté', 'P04', NULL, 3),
-(47, '2018-05-04 00:50:39', 'annulation', 'P04', NULL, 3),
-(48, '2018-05-14 13:20:06', 'bonjour les gens', 'P04', NULL, 2);
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contraintes pour les tables déchargées
 --
-
---
--- Contraintes pour la table `consulter`
---
-ALTER TABLE `consulter`
-  ADD CONSTRAINT `FK_consulter_id_publication` FOREIGN KEY (`id_publication`) REFERENCES `publication` (`id_publication`),
-  ADD CONSTRAINT `FK_consulter_matricule` FOREIGN KEY (`matricule`) REFERENCES `etudiant` (`matricule`);
 
 --
 -- Contraintes pour la table `dirige`
@@ -269,12 +182,6 @@ ALTER TABLE `dirige`
 ALTER TABLE `enseigne`
   ADD CONSTRAINT `FK_enseigne_id_promo` FOREIGN KEY (`id_promo`) REFERENCES `promo` (`id_promo`),
   ADD CONSTRAINT `FK_enseigne_matricule_enseignant` FOREIGN KEY (`matricule_enseignant`) REFERENCES `enseignant` (`matricule_enseignant`);
-
---
--- Contraintes pour la table `etudiant`
---
-ALTER TABLE `etudiant`
-  ADD CONSTRAINT `FK_Etudiant_id_promo` FOREIGN KEY (`id_promo`) REFERENCES `promo` (`id_promo`);
 
 --
 -- Contraintes pour la table `publication`

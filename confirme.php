@@ -59,8 +59,8 @@
                                                 $rq = $bdd->prepare($sql);
                                                 
                                                 if($rq->execute()){
-                                                    echo "Inscription réussite";
-                                                    // header('Location:Connexion.php');
+                                                    
+                                                    header('Location:success.php');
                                                 }
                                                 else{
                                                     echo "Inscription non réussite";

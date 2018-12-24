@@ -43,7 +43,7 @@
 		  <li><a href="contactE.php">Contact</a></li>
 		  
 		  <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #179D79;"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']); ?></a></li>
-		   <li style="float:right"><a href="ChangerMotDepasse.php" title="Modifier Mot de Passe" target="_blanck">Compte</a></li>
+		 
 		</ul>
 		<br><br>
 
@@ -143,7 +143,7 @@
  			 	
 
  			 	<?php if($key['name_file'] !== NULL){
- 			 		echo "<a target='_blank' href=view.php?FileNo=".$key['name_file'].">".$key['name_file']."</a>";
+ 			 		echo "<a target='_blank' href=view.php?name_file=".$key['name_file'].">".$key['name_file']."</a>";
  			 	} ?></div>
  			 	<button class="w3-button w3-block w3-red"><a href="SuppPubEns.php?id=<?php echo $id;?>"  onclick="return confirm('Êtes vous sûr de supprimer?')" >Supprimer</a></button>
 

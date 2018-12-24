@@ -1,8 +1,8 @@
 <?php 
 	session_start();
     require_once 'db.php';
-    if(!isset($_SESSION['email']))
-    header('Location:inscription.php');
+     if(!isset($_SESSION['email']))
+         header('Location:inscription.php');
 
 ?>
 
@@ -11,7 +11,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Affiliation Etudiant</title>
+  <title>Promo</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -29,7 +29,7 @@
 
         <div class="row card-title">
             <span class="col s3">
-                Affiliation Etudiant
+                Promo
             </span>
             <div class="col s9">
                 <div class="btnWrapper">
@@ -44,39 +44,33 @@
         <div class="row card-content">
             <ul class="collapsible">
                 <li class="collapsible-header">
-                    <div class="col s4 center"><strong>Nom</strong></div>
-                    <div class="col s4 center"><strong>Prénom</strong></div>
-                    <div class="col s4 center"><strong>Matricule</strong></div>
-                     <div class="col s4 center"><strong>Promo</strong></div>
+                    <div class="col s4 center"><strong>intitule</strong></div>
+                    <div class="col s4 center"><strong>id_promo</strong></div>
+                    
+                    
                      <div class="col s4 center"></div>
                 </li>
    
                         <?php
-                            $reponse = $bdd ->query('SELECT * FROM etudiant ORDER BY matricule DESC');
+                            $reponse = $bdd ->query('SELECT * FROM promo ORDER BY id_promo ASC');
                             foreach ($reponse as $donnees){
-                            	$matricule = $donnees['matricule'];
-                            	$promo = $donnees['id_promo'];
-
-                            	$intitule = $bdd->query('SELECT * FROM promo WHERE id_promo=\'' . $promo. '\'');
                             	
-                            		foreach ($intitule as $rq ) {
                             			 echo '<ul><li>
                                      <div class="collapsible-header line" tabindex="0">
-                                         <div class="col s4 center">'.$donnees['nom'].'</div>
-                                         <div class="col s4 center">'.$donnees['prenom'].'</div>
-                                         <div class="col s4 center">'.$donnees['matricule'].'</div>
-                                         <div class="col s4 center">'.$rq['intitule'].'</div>
+                                        <div class="col s4 center">'.$donnees['intitule'].'</div> 
+                                        <div class="col s4 center">'.$donnees['id_promo'].'</div>
+                                         
+                                      
                                          <div class="col s4 center">
-                                           <a onclick="return confirm(\'Êtes vous sûr de supprimer?\')" href="SuppAffiliationEtu.php?matricule='.$matricule.'" 
-                                           class="waves-effect waves-light btn-small">Supprimer</a>
+                                           <a  href="filActuEtu.php?id_promo='.$donnees['id_promo'].'" 
+                                           class="waves-effect waves-light btn-small">Consulter</a>
                                        </div>
 
                                      </div>
                                    </li></ul>';
-                            		
-                            	}
-                            
                             }
+                            
+                            
                             ?>
          
             </ul>

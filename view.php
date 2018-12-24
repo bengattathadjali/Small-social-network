@@ -3,10 +3,10 @@
 
 
 
-        $id = isset($_GET['id_publication'])? $_GET['id_publication'] : "";
+        $id = isset($_GET['name_file'])? $_GET['name_file'] : "";
 
-        $stat = $bdd->prepare('SELECT * FROM publication WHERE id_publication=:id_publication');
-        $stat->bindParam(':id_publication',$id);
+        $stat = $bdd->prepare('SELECT * FROM publication WHERE name_file=:name_file');
+        $stat->bindParam(':name_file',$id);
         $stat->execute();
         $row = $stat->fetch();
         header('Content-Type:'.$row['mime_file']);

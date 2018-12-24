@@ -1,4 +1,6 @@
-
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr" >
 
@@ -16,24 +18,24 @@
 
 <body>
 
-  <form action="PasseOublie.php" method="POST">
+  <form action="TPasseOublie.php" method="POST">
   <p>
     <label for="username">E-mail</label>
-    <input id="username" name="mail" type="text">
+    <input id="username" name="email" type="email"required>
   </p>
 
-   <p>
-    <label>Matricule</label>
-    <input   name="Matricule" type="password">
-  </p>
+   
           <center>
                 <select name="statut">
                   <option >Enseignant</option>
                   <option>Etudiant</option>
                   <option>Personnel</option>
                 </select>
-            </center>
-  
+              <b><p style="color:red;  font-size: 20px;"><?php if (isset($_SESSION['Passe']))
+                                                                        echo $_SESSION['Passe']; 
+                                                                ?>
+                                                                  
+                                                                </p></b></center>
 
   
   <p>

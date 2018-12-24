@@ -33,66 +33,15 @@
   <div class="form">
       
       <ul class="tab-group">
-        <li class="tab active"><a href="#Inscrption">Inscrption</a></li>
+        <li class="tab active"><a href="#Information">Information</a></li>
         <li class="tab"><a href="#Affiliation">Affiliation</a></li>
       </ul>
       
       <div class="tab-content">
-        <div id="Inscrption">   
-          <h1>Entrez les coordonnées</h1>
+        <div id="Information">   
+          <h1>Explorer</h1>
           
-          <form action="TraitAdmin.php" method="POST">
           
-          <div class="top-row">
-            <div class="field-wrap">
-              <label>
-                Nom<span class="req">*</span>
-              </label>
-              <input type="text" name="nom" required autocomplete="off" />
-            </div>
-        
-            <div class="field-wrap">
-              <label>
-                Prénom<span class="req">*</span>
-              </label>
-              <input type="text"required name="prenom" autocomplete="off"/>
-            </div>
-          </div>
-
-
-
-          <div class="field-wrap">
-            <label>
-              Matricule<span class="req">*</span>
-            </label>
-            <input type="text"required name="matricule" autocomplete="off"/>
-          </div>
-
-          
-          <div class="field-wrap">
-            <label>
-              Code promo<span class="req" >*</span>
-            </label>
-            <input type="text"required name="promo" id="promo" autocomplete="off"  />
-          </div>
-
-          <center>
-             <span class="custom-dropdown">
-                <select name="statut">
-                  <option >Enseignant</option>
-                  <option>Etudiant</option>
-                  <option>Personnel</option>
-                </select>
-            </span>
-          </center>
-            <br><br>
-
-          <center><b><p style="color:white;  font-size: 20px;"><?php if(isset($_SESSION['error_2']))  echo $_SESSION['error_2']; ?></p></b></center>
-          
-
-            <button type="submit" class="button button-block"/>Ajouter</button><br><br>
-            
-          </form>
            <a href="AffichageEtu.php" target="_blank"><button type="submit"  class="button button-block"/>Afficher Etudiant</button></a><br>
            <a href="AffichageEns.php" target="_blank"><button type="submit"  class="button button-block"/>Afficher Enseignant</button></a><br>
             <a href="AffichagePers.php" target="_blank"><button type="submit"  class="button button-block"/>Afficher Personnel</button></a><br>
@@ -134,7 +83,7 @@
           
              <a href="AffiliationEnseignant.php" target="_blank"><button type="submit"  class="button button-block"/>Affiliation Enseignant</button></a><br>
               <a href="AffiliationPersonnel.php" target="_blank"><button type="submit"  class="button button-block"/>Affiliation Personnel</button></a><br>
-              <a href="AffiliationEtudiant.php" target="_blank"><button type="submit"  class="button button-block"/>Affiliation Etudiant</button></a><br>
+             
         </div>
         
       </div>

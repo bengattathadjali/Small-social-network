@@ -27,7 +27,7 @@
       <li><a href="AutresEtudiantP.php">Autres Eleves</a></li>
       <li><a href="contactP.php">Contact</a></li>
       <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #179D79;"><?php echo $_SESSION['nom'].' '.$_SESSION['prenom'];?></a></li>
-       <li style="float:right"><a href="ChangerMotDepasse.php" title="Modifier Mot de Passe" target="_blanck">Compte</a></li>
+       
     </ul>
     <br><br>
 
