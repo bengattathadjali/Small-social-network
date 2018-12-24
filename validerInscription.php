@@ -1,7 +1,9 @@
 <?php 
+	require_once 'db.php';
+	include 'function.php';
 	session_start();
 	$_SESSION['error']='';
-	require_once 'db.php';
+	
 	
 
 	$nom = trim(htmlspecialchars($_POST['nom']));
@@ -23,7 +25,12 @@
 				$_SESSION['error']='le mot de passe doit contenir 8 caracteres une Maj et miniscule et un nombre';
 			}
 		else{
-				
+			$token = 'AZERTYUIOPQSDFGHJKLMWXCVBNazertyuiopqsdfghjklmwxcvbn0123456789$';
+			$token = str_shuffle($token);
+			$token= substr($token,0,10);
+			$EmailConfirm =0;
+			$motDePasse = md5($motDePasse);
+			$nom_utilisateur=ucfirst($nom)." ".ucfirst($prenom); 
 						if($statut === 'Etudiant'){
 							
 							$email_exsist = $bdd->prepare('SELECT * FROM etudiant WHERE email=:email');
@@ -35,13 +42,18 @@
 								$_SESSION['error']='L\'email existe deja';	
 							}
 							else{		
-									$stmt = $bdd->prepare("INSERT INTO etudiant (nom, prenom, email,motDePasse) VALUES (:nom, :prenom, :email,:motDePasse)");
+									$stmt = $bdd->prepare("INSERT INTO etudiant (nom, prenom, email,motDePasse,EmailConfirm,token) 
+															VALUES (:nom, :prenom, :email,:motDePasse,:EmailConfirm,:token)");
 									$stmt->bindParam(':nom', $nom);
 									$stmt->bindParam(':prenom', $prenom);
 									$stmt->bindParam(':email', $email);
-									$stmt->bindParam(':motDePasse', md5($motDePasse));
+									$stmt->bindParam(':motDePasse',$motDePasse);
+									$stmt->bindParam(':EmailConfirm', $EmailConfirm);
+									$stmt->bindParam(':token', $token);
 
 									if($stmt->execute()){
+										
+										sendmail($email,$nom_utilisateur,$token,$statut);
 										header('Location:inscription.php');
 										$_SESSION['error']='Vérifier votre boite';
 									}
@@ -71,13 +83,17 @@
 											'matricule_enseignant'=>$matricule
 												));
 										}while($matricule_exist->rowCount()==1);
-										$stmt = $bdd->prepare("INSERT INTO enseignant (nom, prenom, email,motDePasse,matricule_enseignant) VALUES (:nom, :prenom, :email,:motDePasse,:matricule_enseignant)");
+										$stmt = $bdd->prepare("INSERT INTO enseignant (nom, prenom, email,motDePasse,matricule_enseignant,EmailConfirm,token)
+													 VALUES (:nom, :prenom, :email,:motDePasse,:matricule_enseignant,:EmailConfirm,:token)");
 										$stmt->bindParam(':nom', $nom);
 										$stmt->bindParam(':prenom', $prenom);
 										$stmt->bindParam(':email', $email);
-										$stmt->bindParam(':motDePasse', md5($motDePasse));
+										$stmt->bindParam(':motDePasse', $motDePasse);
 										$stmt->bindParam(':matricule_enseignant', $matricule);
+										$stmt->bindParam(':EmailConfirm', $EmailConfirm);
+										$stmt->bindParam(':token', $token);
 										if($stmt->execute()){
+											sendmail($email,$nom_utilisateur,$token,$statut);
 											header('Location:inscription.php');
 											$_SESSION['error']='Vérifier votre boite';
 										}
@@ -108,13 +124,17 @@
 												'matricule_personnel'=>$matricule
 													));
 											}while($matricule_exist->rowCount()==1);	
-											$stmt = $bdd->prepare("INSERT INTO personnel (nom, prenom, email,motDePasse,matricule_personnel) VALUES (:nom, :prenom, :email,:motDePasse,:matricule_personnel)");
+											$stmt = $bdd->prepare("INSERT INTO personnel (nom, prenom, email,motDePasse,matricule_personnel,EmailConfirm,token)
+											 VALUES (:nom, :prenom, :email,:motDePasse,:matricule_personnel,:EmailConfirm,:token)");
 											$stmt->bindParam(':nom', $nom);
 											$stmt->bindParam(':prenom', $prenom);
 											$stmt->bindParam(':email', $email);
-											$stmt->bindParam(':motDePasse', md5($motDePasse));
+											$stmt->bindParam(':motDePasse', $motDePasse);
 											$stmt->bindParam(':matricule_personnel', $matricule);
+											$stmt->bindParam(':EmailConfirm', $EmailConfirm);
+											$stmt->bindParam(':token', $token);
 											if($stmt->execute()){
+												sendmail($email,$nom_utilisateur,$token,$statut);
 												header('Location:inscription.php');
 												$_SESSION['error']='Vérifier votre boite';
 											}

@@ -66,12 +66,7 @@
             <input type="password"required name="motDePasse" autocomplete="off"/>
           </div>
 
-          <div class="field-wrap">
-            <label>
-              Matricule<span class="req">*</span>
-            </label>
-            <input type="text"required name="matricule" autocomplete="off"/>
-          </div>
+          
           <center>
              <span class="custom-dropdown">
                 <select name="statut">
