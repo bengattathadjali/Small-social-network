@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `dirige`;
 CREATE TABLE IF NOT EXISTS `dirige` (
-  `matricule_personnel` varchar(255) NOT NULL,
+  `matricule_personnel` varchar(50) NOT NULL,
   `id_promo` int(11) NOT NULL,
   PRIMARY KEY (`matricule_personnel`,`id_promo`),
   KEY `FK_dirige_id_promo` (`id_promo`)
@@ -44,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `dirige` (
 
 DROP TABLE IF EXISTS `enseignant`;
 CREATE TABLE IF NOT EXISTS `enseignant` (
-  `nom` char(255) DEFAULT NULL,
-  `prenom` char(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `motDePasse` varchar(255) DEFAULT NULL,
-  `matricule_enseignant` varchar(255) NOT NULL,
+  `nom` char(50) DEFAULT NULL,
+  `prenom` char(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `motDePasse` varchar(50) DEFAULT NULL,
+  `matricule_enseignant` varchar(50) NOT NULL,
   `EmailConfirm` tinyint(4) NOT NULL,
   `token` varchar(250) NOT NULL,
   PRIMARY KEY (`matricule_enseignant`)
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `enseignant` (
 
 DROP TABLE IF EXISTS `enseigne`;
 CREATE TABLE IF NOT EXISTS `enseigne` (
-  `matricule_enseignant` varchar(255) NOT NULL,
+  `matricule_enseignant` varchar(50) NOT NULL,
   `id_promo` int(11) NOT NULL,
   PRIMARY KEY (`matricule_enseignant`,`id_promo`),
   KEY `FK_enseigne_id_promo` (`id_promo`)
@@ -76,10 +76,10 @@ CREATE TABLE IF NOT EXISTS `enseigne` (
 
 DROP TABLE IF EXISTS `etudiant`;
 CREATE TABLE IF NOT EXISTS `etudiant` (
-  `nom` char(255) DEFAULT NULL,
-  `prenom` char(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `motDePasse` varchar(255) DEFAULT NULL,
+  `nom` char(50) DEFAULT NULL,
+  `prenom` char(50) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `motDePasse` varchar(50) DEFAULT NULL,
   `EmailConfirm` tinyint(4) NOT NULL,
   `token` varchar(250) NOT NULL,
   PRIMARY KEY (`email`)
@@ -93,11 +93,11 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 
 DROP TABLE IF EXISTS `personnel`;
 CREATE TABLE IF NOT EXISTS `personnel` (
-  `nom` char(255) DEFAULT NULL,
-  `prenom` char(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `motDePasse` varchar(255) DEFAULT NULL,
-  `matricule_personnel` varchar(255) NOT NULL,
+  `nom` char(50) DEFAULT NULL,
+  `prenom` char(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `motDePasse` varchar(50) DEFAULT NULL,
+  `matricule_personnel` varchar(50) NOT NULL,
   `EmailConfirm` tinyint(4) NOT NULL,
   `token` varchar(250) NOT NULL,
   PRIMARY KEY (`matricule_personnel`)
@@ -111,8 +111,8 @@ CREATE TABLE IF NOT EXISTS `personnel` (
 
 DROP TABLE IF EXISTS `promo`;
 CREATE TABLE IF NOT EXISTS `promo` (
-  `id_promo` int(255) NOT NULL AUTO_INCREMENT,
-  `intitule` char(255) DEFAULT NULL,
+  `id_promo` int(50) NOT NULL AUTO_INCREMENT,
+  `intitule` char(50) DEFAULT NULL,
   PRIMARY KEY (`id_promo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
@@ -153,11 +153,11 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `id_publication` int(11) NOT NULL AUTO_INCREMENT,
   `datePublication` datetime DEFAULT NULL,
   `contenu` text,
-  `matricule_personnel` varchar(255) DEFAULT NULL,
-  `matricule_enseignant` varchar(255) DEFAULT NULL,
+  `matricule_personnel` varchar(50) DEFAULT NULL,
+  `matricule_enseignant` varchar(50) DEFAULT NULL,
   `id_promo` int(11) DEFAULT NULL,
-  `name_file` varchar(255) NOT NULL,
-  `mime_file` varchar(255) NOT NULL,
+  `name_file` varchar(50) NOT NULL,
+  `mime_file` varchar(50) NOT NULL,
   `data_file` longblob,
   PRIMARY KEY (`id_publication`),
   KEY `FK_Publication_matricule_personnel` (`matricule_personnel`),
