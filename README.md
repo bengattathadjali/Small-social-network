@@ -1,4 +1,4 @@
 FSEI is the first cycle ending project
-requirements:
-  $ docker pull php
+Requirements:
+    - docker pull php
 @bengattathadjali
