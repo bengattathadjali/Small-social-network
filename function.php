@@ -30,7 +30,7 @@
                 $mailer->Subject = 'Confirmation Email';
                 $mailer->Body="
                               Bonjour, Mr/Mlle $nom_utilisateur Pour activer votre compte cliquez sur ce lien : <br><br>
-                              <a href='http://localhost/fsei/Confirme.php?email_utilisateur=$email_utilisateur&token=$token&statut=$statut'>Cliquez Ici !</a>
+                              <a href='http://localhost/fsei/confirme.php?email_utilisateur=$email_utilisateur&token=$token&statut=$statut'>Cliquez Ici !</a>
                                         ";
                                 
                 if($mailer->send()){
