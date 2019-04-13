@@ -44,9 +44,9 @@
                     <div class="col s4 center"><strong>Nom</strong></div>
                     <div class="col s4 center"><strong>Prénom</strong></div>
                     <div class="col s4 center"><strong>Matricule</strong></div>
-                     <div class="col s4 center"><strong>Email</strong></div>
-                     <div class="col s4 center"><strong>Promo</strong></div>
-                     <div class="col s4 center"></div>
+                    <div class="col s4 center"><strong>Email</strong></div>
+                    <div class="col s4 center"><strong>Promo</strong></div>
+                    <div class="col s4 center"></div>
                 </li>
    
                         <?php
