@@ -57,11 +57,13 @@
 </head>
 
 <body>
-	<ul style="background-color: #24333C;">
-      <li><a href="filActuEtu.php?id_promo=1">Flux</a></li>
+	<ul style="background-color: #1e1e4b;">
+  <?php 
+         echo '<li><a href="filActuEtu.php?id_promo='.$_SESSION['id_promo'].' ">Flux</a></li>';
+        ?>
       <li><a href="autreEtudiant.php">Autres Eleves</a></li>
       <li><a href="contact.php">Contact</a></li>
-      <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #179D79;"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']);?></a></li>
+      <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #ffbc3b;"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']);?></a></li>
       
       
     
@@ -76,7 +78,7 @@
 
   <table class="w3-table-all">
     <thead>
-      <tr class="w3" style="background:#179D79; ">
+      <tr class="w3" style="background:#1e1e4b; ">
         <th style="color: white;">Nom</th>
         <th style="color: white;">Prénom</th>
         <th style="color: white;">Email</th>
@@ -116,7 +118,7 @@
 
   <table class="w3-table-all">
     <thead>
-      <tr class="w3" style="background:#179D79; ">
+      <tr class="w3" style="background:#1e1e4b; ">
         <th style="color: white;">Nom</th>
         <th style="color: white;">Prénom</th>
         <th style="color: white;">Email</th>

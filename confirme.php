@@ -20,7 +20,7 @@
                                 
                                 if($rq->execute()){
                                     echo "Inscription réussite";
-                                    // header('Location:Connexion.php');
+                                     header('Location:Connexion.php');
                                 }
                                 else{
                                     echo "Inscription non réussite";
@@ -40,7 +40,7 @@
                                         
                                         if($rq->execute()){
                                             echo "Inscription réussite";
-                                            // header('Location:Connexion.php');
+                                             header('Location:Connexion.php');
                                         }
                                         else{
                                             echo "Inscription non réussite";

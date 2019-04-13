@@ -22,11 +22,11 @@
 </head>
 
 <body>
-	<ul style="background-color: #24333C;">
+	<ul style="background-color: #1e1e4b;">
       <li><a href="filActuPers.php">Flux</a></li>
       <li><a href="AutresEtudiantP.php">Autres Eleves</a></li>
       <li><a href="contactP.php">Contact</a></li>
-      <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #179D79;"><?php echo $_SESSION['nom'].' '.$_SESSION['prenom'];?></a></li>
+      <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #ffbc3b;"><?php echo $_SESSION['nom'].' '.$_SESSION['prenom'];?></a></li>
        
     </ul>
     <br><br>
@@ -36,7 +36,7 @@
 
   <table class="w3-table-all">
     <thead>
-      <tr class="w3" style="background:#179D79; ">
+      <tr class="w3" style="background:#1e1e4b; ">
         <th style="color: white;">Nom</th>
         <th style="color: white;">Prénom</th>
         <th style="color: white;">Email</th>

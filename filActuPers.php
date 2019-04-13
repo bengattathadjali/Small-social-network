@@ -37,13 +37,13 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/Menu.css">
 </head>
 <body>
-	<body style="background: #e9ebee;">
-		<ul style="background-color: #24333C;">
+	<body style="background: #DCDCDC;">
+		<ul style="background-color: #1e1e4b;">
 		  <li><a href="filActuPers.php">Flux</a></li>
 		  <li><a href="AutresEtudiantP.php">Autres Eleves</a></li>
 		  <li><a href="contactP.php">Contact</a></li>
 		  
-		  <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #179D79;"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']);?></a></li>
+		  <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #ffbc3b;"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']);?></a></li>
 		 
 		</ul>
 		<br><br>

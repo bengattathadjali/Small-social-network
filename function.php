@@ -19,18 +19,22 @@
                     	}
                 $mailer->Host = 'smtp.gmail.com';
                 $mailer->SMTPAuth =true;
-                $mailer->Username = 'fsei27000@gmail.com';
-                $mailer->Password = 'Umab27fsei';
+                $mailer->Username = 'insfp27red@gmail.com';
+                $mailer->Password = 'Rezaq123';
                 $mailer->SMTPSecure = 'tls';
                 $mailer->Port = 587;
                                 
-				$mailer->setFrom($mailer->Username,'Faculte des sciences exacates de l\'informatique');
+				$mailer->setFrom($mailer->Username,'INSFP');
                 $mailer->addAddress($email_utilisateur,$nom_utilisateur);
                 $mailer->isHTML(true);
                 $mailer->Subject = 'Confirmation Email';
                 $mailer->Body="
+                                République Algérienne Démocratique et Populaire
+                                Ministère de la Formation et l’Enseignement Professionnels
+                                Institut National Spécialisé de la Formation Professionnelle
+                                MOSTAGANEM
                               Bonjour, Mr/Mlle $nom_utilisateur Pour activer votre compte cliquez sur ce lien : <br><br>
-                              <a href='http://localhost/fsei/Confirme.php?email_utilisateur=$email_utilisateur&token=$token&statut=$statut'>Cliquez Ici !</a>
+                              <a href='http://localhost/fsei/confirme.php?email_utilisateur=$email_utilisateur&token=$token&statut=$statut'>Cliquez Ici !</a>
                                         ";
                                 
                 if($mailer->send()){
