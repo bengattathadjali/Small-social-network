@@ -1,5 +1,8 @@
 <?php 
-	include 'function.php';
+	session_start();
+	$id_promo = 27;
 	
-	sendmail($email_utilisateur,$nom_utilisateur,$token);
 ?>
+<html>
+<li><a href='filActuEtu.php?id_promo=<?php echo $id_promo; ?> '>Flux</a></li>
+</html>

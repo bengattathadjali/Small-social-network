@@ -1,7 +1,7 @@
 <?php
   session_start();
   if(!isset($_SESSION['email']))
-		header('Location:inscription.php');
+		header('Location:index.php');
  // $_SESSION['error_2']='';
   //$_SESSION['msg_2']='';
 

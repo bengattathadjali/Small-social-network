@@ -2,7 +2,10 @@
 	require "vendor/autoload.php";
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
-
+    $email_utilisateur = "hadjalibenguettat1997@gmail.com";
+	$nom_utilisateur ="hadjali";
+	$token = 43245421356;
+	$Staut = "Etudiant";
 	function sendmail($email_utilisateur,$nom_utilisateur,$token,$statut){
 		$dev = true;
         $mailer = new PHPMailer ($dev);

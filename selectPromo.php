@@ -2,7 +2,7 @@
 	session_start();
     require_once 'db.php';
      if(!isset($_SESSION['email']))
-         header('Location:inscription.php');
+         header('Location:index.php');
 
 ?>
 

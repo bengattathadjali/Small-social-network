@@ -1,7 +1,7 @@
 <?php 
   session_start();
   if(!isset($_SESSION['email']))
-		header('Location:inscription.php');
+		header('Location:index.php');
 	require_once 'db.php';
 	$matricule_enseignant = $_SESSION['matricule_enseignant'];
 

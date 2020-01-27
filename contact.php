@@ -1,9 +1,9 @@
 <?php 
   session_start();
   if(!isset($_SESSION['email']))
-		header('Location:inscription.php');
+		header('Location:index.php');
 	require_once 'db.php';
-	
+	$id_promo = $_SESSION['id_promo'];
 
 ?>
 
@@ -58,7 +58,7 @@
 
 <body>
 	<ul style="background-color: #24333C;">
-      <li><a href="filActuEtu.php?id_promo=1">Flux</a></li>
+      <li><a href='filActuEtu.php?id_promo=<?php echo $id_promo; ?> '>Flux</a></li>
       <li><a href="autreEtudiant.php">Autres Eleves</a></li>
       <li><a href="contact.php">Contact</a></li>
       <li style="float:right"><a class="active" href="deconnexion.php" title="Déconnexion" style="background: #179D79;"><?php echo ucfirst($_SESSION['nom']).' '.ucfirst($_SESSION['prenom']);?></a></li>

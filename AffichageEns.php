@@ -2,7 +2,7 @@
     require_once 'db.php';
     session_start();
     if(!isset($_SESSION['email']))
-    header('Location:inscription.php');
+    header('Location:index.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr" >

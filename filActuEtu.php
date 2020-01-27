@@ -11,6 +11,7 @@
   $_SESSION['nom'] = strtolower($coor['nom']);
   $_SESSION['prenom'] = strtolower($coor['prenom']);
   $id_promo = htmlspecialchars ($_GET['id_promo']);
+  $_SESSION['id_promo'] = $id_promo;
 ?>
 
 <!DOCTYPE html>

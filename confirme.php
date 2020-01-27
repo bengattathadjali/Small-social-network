@@ -19,8 +19,8 @@
                                 $rq = $bdd->prepare($sql);
                                 
                                 if($rq->execute()){
-                                    echo "Inscription réussite";
-                                    // header('Location:Connexion.php');
+                                    //echo "Inscription réussite";
+                                    header('Location:index.php');
                                 }
                                 else{
                                     echo "Inscription non réussite";
@@ -39,8 +39,8 @@
                                         $rq = $bdd->prepare($sql);
                                         
                                         if($rq->execute()){
-                                            echo "Inscription réussite";
-                                            // header('Location:Connexion.php');
+                                            //echo "Inscription réussite";
+                                            header('Location:index.php');
                                         }
                                         else{
                                             echo "Inscription non réussite";
@@ -59,8 +59,8 @@
                                                 $rq = $bdd->prepare($sql);
                                                 
                                                 if($rq->execute()){
-                                                    
-                                                    header('Location:success.php');
+                                                   //echo "Inscription réussite";
+                                                    header('Location:index.php');
                                                 }
                                                 else{
                                                     echo "Inscription non réussite";
@@ -69,7 +69,7 @@
                                         }
             }
             else{
-                header('Location:inscription.php');
+                header('Location:index.php');
             }
             
 ?>

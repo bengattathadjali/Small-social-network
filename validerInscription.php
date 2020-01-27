@@ -1,6 +1,6 @@
 <?php 
 	if (!isset($_SESSION['nom'])){
-		header('Location:inscription.php');
+		header('Location:index.php');
 	}
 	require_once 'db.php';
 	include 'function.php';
@@ -24,7 +24,7 @@
 
 		if(!$uppercase || !$lowercase || !$number || strlen($motDePasse) < 8) {
 				//renvoie message d'erreur
-				header('Location:inscription.php');
+				header('Location:index.php');
 				$_SESSION['error']='le mot de passe doit contenir 8 caracteres une Maj et miniscule et un nombre';
 			}
 		else{
@@ -41,7 +41,7 @@
 							'email'=>$email
 						));
 							if($email_exsist->rowCount()===1){
-								header('Location:inscription.php');
+								header('Location:index.php');
 								$_SESSION['error']='L\'email existe deja';	
 							}
 							else{		
@@ -57,11 +57,11 @@
 									if($stmt->execute()){
 										
 										sendmail($email,$nom_utilisateur,$token,$statut);
-										header('Location:inscription.php');
+										header('Location:index.php');
 										$_SESSION['error']='Vérifier votre boite';
 									}
 									else{
-										header('Location:inscription.php');
+										header('Location:index.php');
 									    $_SESSION['error']='Une erreur s\'est produite Veuillez réessyer';
 									}					
 											
@@ -75,7 +75,7 @@
 								'email'=>$email
 							));
 								if($email_exsist->rowCount()===1){
-									header('Location:inscription.php');
+									header('Location:index.php');
 									$_SESSION['error']='L\'email existe deja';	
 								}
 								else{	
@@ -97,11 +97,11 @@
 										$stmt->bindParam(':token', $token);
 										if($stmt->execute()){
 											sendmail($email,$nom_utilisateur,$token,$statut);
-											header('Location:inscription.php');
+											header('Location:index.php');
 											$_SESSION['error']='Vérifier votre boite';
 										}
 										else{
-											header('Location:inscription.php');
+											header('Location:index.php');
 											$_SESSION['error']='Une erreur s\'est produite Veuillez réessyer';
 										}
 																
@@ -116,7 +116,7 @@
 									'email'=>$email
 								));
 									if($email_exsist->rowCount()===1){
-										header('Location:inscription.php');
+										header('Location:index.php');
 										$_SESSION['error']='L\'email existe deja';	
 									}
 									else{	
@@ -138,11 +138,11 @@
 											$stmt->bindParam(':token', $token);
 											if($stmt->execute()){
 												sendmail($email,$nom_utilisateur,$token,$statut);
-												header('Location:inscription.php');
+												header('Location:index.php');
 												$_SESSION['error']='Vérifier votre boite';
 											}
 											else{
-												header('Location:inscription.php');
+												header('Location:index.php');
 												$_SESSION['error']='Une erreur s\'est produite Veuillez réessyer';
 											}
 																	

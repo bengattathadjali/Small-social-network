@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if (!isset($_POST['email'])){
-		header('Location:inscription.php');
+		header('Location:index.php');
 	}
 	require_once 'db.php';
 	$_SESSION['msg']='';
@@ -35,7 +35,7 @@
 											 header('Location:selectPromo.php');
 										}
 										else{
-										 header('Location:inscription.php');
+										 header('Location:index.php');
 										
 										 $_SESSION['msg']='Champs incorrecte';
 								}
@@ -56,7 +56,7 @@
 											header('Location:filActuEns.php');
 										}
 										else{
-									    header('Location:inscription.php');
+									    header('Location:index.php');
 										$_SESSION['msg']='Champs incorrecte';
 								}
 			}
@@ -76,7 +76,7 @@
 											header('Location:filActuPers.php');
 										}
 										else{
-										header('Location:inscription.php');
+										header('Location:index.php');
 										$_SESSION['msg']='Champs incorrecte';
 								}
 
