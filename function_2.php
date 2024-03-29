@@ -20,7 +20,7 @@
                 $mailer->Host = 'smtp.gmail.com';
                 $mailer->SMTPAuth =true;
                 $mailer->Username = 'fsei27000@gmail.com';
-                $mailer->Password = 'Umab27fsei';
+                $mailer->Password = '***********';
                 $mailer->SMTPSecure = 'tls';
                 $mailer->Port = 587;
                                 
