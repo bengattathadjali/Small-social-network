@@ -2,8 +2,8 @@
 	require "vendor/autoload.php";
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
-    $email_utilisateur = "hadjalibenguettat1997@gmail.com";
-	$nom_utilisateur ="hadjali";
+    $email_utilisateur = "*@gmail.com";
+	$nom_utilisateur ="*";
 	$token = 43245421356;
 	$Staut = "Etudiant";
 	function sendmail($email_utilisateur,$nom_utilisateur,$token,$statut){
@@ -23,7 +23,7 @@
                 $mailer->Host = 'smtp.gmail.com';
                 $mailer->SMTPAuth =true;
                 $mailer->Username = 'fsei27000@gmail.com';
-                $mailer->Password = 'Umab27fsei';
+                $mailer->Password = '********';
                 $mailer->SMTPSecure = 'tls';
                 $mailer->Port = 587;
                                 
